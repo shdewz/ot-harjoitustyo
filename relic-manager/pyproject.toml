@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "relic-manager"
+version = "0.1.0"
+description = ""
+authors = ["shdewz <shdewz@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pytest = "^8.3.5"
+invoke = "^2.2.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
