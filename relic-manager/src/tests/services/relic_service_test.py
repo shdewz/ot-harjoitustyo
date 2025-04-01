@@ -1,13 +1,13 @@
 import unittest
-from entities.relic import Relic
 from services.relic_service import RelicService
+from entities.relic import Relic
 
 
 class FakeRelicRepository:
     def __init__(self, relics=None):
         self.relics = relics or []
 
-    def get_all(self):
+    def find_all(self):
         return self.relics
     
     def create(self, relic):
@@ -19,13 +19,13 @@ class TestRelicService(unittest.TestCase):
     def setUp(self):
         self.relic_service = RelicService(FakeRelicRepository())
 
-        self.relic_a = Relic(1, "set 1", "head", 15, "hp", [("spd", 6.2)])
-        self.relic_b = Relic(2, "set 5", "body", 15, "atk%", [("atk", 78)])
+        self.relic_a = Relic("set 1", "head", 15, "hp", [("spd", 6.2)])
+        self.relic_b = Relic("set 5", "body", 15, "atk%", [("atk", 78)])
 
     def test_create_relic(self):
-        self.relic_service.create(self.relic_a)
+        self.relic_service.create("set 1", "head", 15, "hp", [("spd", 6.2)])
         relics = self.relic_service.get_all()
 
         self.assertEqual(len(relics), 1)
         self.assertEqual(relics[0].level, 15)
-        self.assertEqual(relics[0].type, "head")
+        self.assertEqual(relics[0].relic_type, "head")

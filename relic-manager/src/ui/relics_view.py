@@ -25,7 +25,8 @@ class RelicsView:
         add_relic_button = ttk.Button(
             master=self._frame,
             text="Add new relic",
-            command=self._show_add_relic_view
+            # command=self._show_add_relic_view
+            command=self._add_temp_relic
         )
 
         add_relic_button.grid(
@@ -35,6 +36,11 @@ class RelicsView:
             pady=5,
             sticky=constants.EW
         )
+
+    def _add_temp_relic(self):
+        relic_service.create("Example Set", "Head", 15, "HP", [("SPD", 6.2)])
+        relics = relic_service.get_all()
+        self._initialize_relic_table(relics)
 
     def _initialize_relic_table(self, relics):
         columns = [("Set", 140, "w"), ("Type", 30, "center"), ("Level", 20, "center"), ("Main", 40, "center"), ("Sub1", 40, "center")]

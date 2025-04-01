@@ -1,5 +1,5 @@
 class Relic:
-    def __init__(self, relic_id, relic_set, relic_type, level, mainstat, substats):
+    def __init__(self, relic_set, relic_type, level, mainstat, substats):
         """Relic constructor.
 
         Args:
@@ -11,7 +11,6 @@ class Relic:
                 type: (hp, hp%, atk, atk%, def, spd, crate, cdmg, ehr, be, effres)
         """
 
-        self.id = relic_id
         self.relic_set = relic_set
         self.relic_type = relic_type
         self.level = level
