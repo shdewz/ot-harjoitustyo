@@ -64,7 +64,7 @@ class RelicsView:
         self._relic_list_frame = ttk.Frame(master=self._frame)
 
         self._initialize_header()
-        relics = relic_service.get_all_relics()
+        relics = relic_service.get_all()
         self._initialize_relic_table(relics)
 
         self._relic_list_frame.grid(
