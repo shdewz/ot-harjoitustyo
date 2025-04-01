@@ -10,6 +10,7 @@ python = "^3.10"
 pytest = "^8.3.5"
 invoke = "^2.2.0"
 dotenv = "^0.9.9"
+coverage = "^7.8.0"
 
 
 [build-system]
