@@ -6,5 +6,6 @@ This program will be a **relic manager** for the gacha game *Honkai: Star Rail*,
 
 ## Documentation
 
-- [Requirements specification](docs/requirements-specification.md)
-- [Working hours](docs/working-hours.md)
+- [Requirements specification](relic-manager/docs/requirements-specification.md)
+- [Working hours](relic-manager/docs/working-hours.md)
+- [Changelog](relic-manager/docs/changelog.md)
