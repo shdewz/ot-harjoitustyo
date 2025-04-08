@@ -12,7 +12,7 @@ class RelicRepository:
         cursor.execute("select * from relics;")
         rows = cursor.fetchall()
         for row in rows:
-            relics.append(Relic(
+            relics.append(Relic(0,
                 row["relic_set"],
                 row["type"],
                 row["level"],
