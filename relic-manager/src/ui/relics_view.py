@@ -1,5 +1,6 @@
 from tkinter import ttk, constants
 from services.relic_service import relic_service
+from entities.relic import Relic
 
 class RelicsView:
     def __init__(self, root):
@@ -38,12 +39,22 @@ class RelicsView:
         )
 
     def _add_temp_relic(self):
-        relic_service.create("Example Set", "Head", 15, "HP", [("SPD", 6.2)])
+        relic_service.create("Example Set", "Head", 15, "HP", [("SPD", 6.2), ("ATK%", 8.7), ("EHR%", 11.9), ("ATK", 76)])
         relics = relic_service.get_all()
         self._initialize_relic_table(relics)
 
-    def _initialize_relic_table(self, relics):
-        columns = [("Set", 140, "w"), ("Type", 30, "center"), ("Level", 20, "center"), ("Main", 40, "center"), ("Sub1", 40, "center")]
+    def _initialize_relic_table(self, relics: list[Relic]):
+        columns = [
+            ("Set", 200, "w"),
+            ("Type", 50, "center"),
+            ("Level", 40, "center"),
+            ("Mainstat", 90, "center"),
+            ("Substat 1", 90, "center"),
+            ("Substat 2", 90, "center"),
+            ("Substat 3", 90, "center"),
+            ("Substat 4", 90, "center"),
+            ("Score", 90, "center"),
+        ]
         tree = ttk.Treeview(master=self._frame, columns=list(map(lambda x: x[0], columns)), show="headings")
 
         for (name, width, anchor) in columns:
@@ -51,7 +62,16 @@ class RelicsView:
             tree.column(name, width=width, anchor=anchor)
 
         for relic in relics:
-            tree.insert('', 'end', values=[relic["relic_set"], relic["type"], relic["level"], f"10 {relic["mainstat"]}", f"{relic["substat1value"]} {relic["substat1"]}"])
+            substats = list(map(
+                lambda i: format_stat(relic.substats[i][0], relic.substats[i][1]),
+            range(4)))
+
+            tree.insert('', 'end', values=[
+                relic.relic_set,
+                relic.relic_type,
+                relic.level,
+                format_stat(relic.mainstat, relic.mainstat_value)
+            ] + substats + [0])
 
         tree.grid(
             row=1,
@@ -83,6 +103,10 @@ class RelicsView:
         self._frame.grid_columnconfigure(0, weight=1)
         self._frame.grid_columnconfigure(1, weight=0)
 
+def format_stat(stat, value):
+    percent = "%" if stat[-1] == "%" else ""
+    stat_name = stat[:-1] if percent == "%" else stat
+    return f"{round(value, 1) if percent == "%" else int(value)}{percent} {stat_name}"
 
 def sort(tree, col, desc):
     data = [(tree.set(item, col), item) for item in tree.get_children("")]
