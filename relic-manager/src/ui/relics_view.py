@@ -39,20 +39,21 @@ class RelicsView:
         )
 
     def _add_temp_relic(self):
-        relic_service.create("Example Set", "Head", 15, "HP", [("SPD", 6.2), ("ATK%", 8.7), ("EHR%", 11.9), ("ATK", 76)])
+        relic_service.create(1, "Example Set", "Head", 15, "HP", [("SPD", 6.2), ("ATK%", 8.7), ("EHR%", 11.9), ("ATK", 76)])
         relics = relic_service.get_all()
         self._initialize_relic_table(relics)
 
     def _initialize_relic_table(self, relics: list[Relic]):
         columns = [
+            ("x", 20, "center"),
             ("Set", 200, "w"),
             ("Type", 50, "center"),
             ("Level", 40, "center"),
-            ("Mainstat", 90, "center"),
-            ("Substat 1", 90, "center"),
-            ("Substat 2", 90, "center"),
-            ("Substat 3", 90, "center"),
-            ("Substat 4", 90, "center"),
+            ("Mainstat", 100, "w"),
+            ("Substat 1", 100, "w"),
+            ("Substat 2", 100, "w"),
+            ("Substat 3", 100, "w"),
+            ("Substat 4", 100, "w"),
             ("Score", 90, "center"),
         ]
         tree = ttk.Treeview(master=self._frame, columns=list(map(lambda x: x[0], columns)), show="headings")
@@ -66,7 +67,8 @@ class RelicsView:
                 lambda i: format_stat(relic.substats[i][0], relic.substats[i][1]),
             range(4)))
 
-            tree.insert('', 'end', values=[
+            tree.insert("", "end", values=[
+                "x",
                 relic.relic_set,
                 relic.relic_type,
                 relic.level,
