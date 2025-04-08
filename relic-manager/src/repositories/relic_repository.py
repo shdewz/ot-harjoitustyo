@@ -1,4 +1,3 @@
-from entities.relic import Relic
 from db import get_database_connection
 
 
@@ -23,7 +22,14 @@ class RelicRepository:
         print(relic)
         cursor.execute(f"""
             insert into relics (relic_set, type, level, mainstat, substat1, substat1value)
-            values ('{relic.relic_set}', '{relic.relic_type}', '{relic.level}', '{relic.mainstat}', '{relic.substats[0][0]}', '{relic.substats[0][1]}')
+            values (
+                    '{relic.relic_set}',
+                    '{relic.relic_type}',
+                    '{relic.level}',
+                    '{relic.mainstat}',
+                    '{relic.substats[0][0]}',
+                    '{relic.substats[0][1]}'
+            )
         """)
         self._connection.commit()
         return relic

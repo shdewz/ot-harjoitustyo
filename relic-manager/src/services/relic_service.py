@@ -10,7 +10,7 @@ class RelicService:
         relics = self._relic_repository.find_all()
 
         return list(relics)
-    
+
     def create(self, relic_set, relic_type, level, mainstat, substats):
         print(mainstat)
         print(substats)
