@@ -30,25 +30,18 @@ class RelicRepository:
     def create(self, relic):
         cursor = self._connection.cursor()
         cursor.execute(f"""
-            insert into relics (relic_set, type, level, mainstat,
-                                substat1, substat1value,
-                                substat2, substat2value,
-                                substat3, substat3value,
-                                substat4, substat4value
+            insert into relics (
+                relic_set, type, level, mainstat,
+                {",".join(map(lambda i: f"substat{i+1}, substat{i+1}value", range(4)))}
             )
             values (
                     '{relic.relic_set}',
                     '{relic.relic_type}',
                     '{relic.level}',
                     '{relic.mainstat}',
-                    '{relic.substats[0][0]}',
-                    '{relic.substats[0][1]}',
-                    '{relic.substats[1][0]}',
-                    '{relic.substats[1][1]}',
-                    '{relic.substats[2][0]}',
-                    '{relic.substats[2][1]}',
-                    '{relic.substats[3][0]}',
-                    '{relic.substats[3][1]}'
+                    {",".join(map(lambda i:
+                                  f"'{relic.substats[i][0]}', '{relic.substats[i][1]}'",
+                    range(4)))}
             )
         """)
         self._connection.commit()
