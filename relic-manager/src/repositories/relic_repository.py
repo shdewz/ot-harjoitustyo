@@ -46,6 +46,12 @@ class RelicRepository:
         """)
         self._connection.commit()
         return relic
+    
+    def delete(self, id):
+        cursor = self._connection.cursor()
+        cursor.execute(f"delete from relics where id = {id};")
+        self._connection.commit()
+        return True
 
 
 relic_repository = RelicRepository(get_database_connection())
