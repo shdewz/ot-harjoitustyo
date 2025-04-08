@@ -39,7 +39,7 @@ class RelicsView:
         )
 
     def _add_temp_relic(self):
-        relic_service.create(1, "Example Set", "Head", 15, "HP", [("SPD", 6.2), ("ATK%", 8.7), ("EHR%", 11.9), ("ATK", 76)])
+        relic_service.create("Example Set", "Head", 15, "HP", [("SPD", 6.2), ("ATK%", 8.7), ("EHR%", 11.9), ("ATK", 76)])
         relics = relic_service.get_all()
         self._initialize_relic_table(relics)
 

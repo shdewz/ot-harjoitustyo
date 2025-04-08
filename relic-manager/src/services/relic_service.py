@@ -11,8 +11,8 @@ class RelicService:
 
         return list(relics)
 
-    def create(self, id, relic_set, relic_type, level, mainstat, substats):
-        relic = Relic(id, relic_set, relic_type, level, mainstat, substats)
+    def create(self, relic_set, relic_type, level, mainstat, substats):
+        relic = Relic(-1, relic_set, relic_type, level, mainstat, substats)
         return self._relic_repository.create(relic)
     
     def delete(self, id):

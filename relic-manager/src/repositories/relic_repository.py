@@ -12,7 +12,8 @@ class RelicRepository:
         cursor.execute("select * from relics;")
         rows = cursor.fetchall()
         for row in rows:
-            relics.append(Relic(0,
+            relics.append(Relic(
+                row["id"],
                 row["relic_set"],
                 row["type"],
                 row["level"],
@@ -44,6 +45,7 @@ class RelicRepository:
                     range(4)))}
             )
         """)
+        id = cursor.lastrowid
         self._connection.commit()
         return relic
     
