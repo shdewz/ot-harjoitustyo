@@ -19,13 +19,14 @@ class TestRelicService(unittest.TestCase):
     def setUp(self):
         self.relic_service = RelicService(FakeRelicRepository())
 
-        self.relic_a = Relic("set 1", "head", 15, "hp", [("spd", 6.2)])
-        self.relic_b = Relic("set 5", "body", 15, "atk%", [("atk", 78)])
+        self.relic_a = Relic(1, "Example Set", "Head", 15, "HP", [("SPD", 6.2), ("ATK%", 8.7), ("EHR%", 11.9), ("ATK", 76)])
+        self.relic_b = Relic(2, "Example Set", "Body", 15, "CDMG", [("SPD", 6.2), ("ATK%", 8.7), ("EHR%", 11.9), ("ATK", 76)])
 
     def test_create_relic(self):
-        self.relic_service.create("set 1", "head", 15, "hp", [("spd", 6.2)])
+        self.relic_service.create(1, "Example Set", "Head", 15, "HP", [("SPD", 6.2), ("ATK%", 8.7), ("EHR%", 11.9), ("ATK", 76)])
         relics = self.relic_service.get_all()
 
         self.assertEqual(len(relics), 1)
         self.assertEqual(relics[0].level, 15)
-        self.assertEqual(relics[0].relic_type, "head")
+        self.assertEqual(relics[0].relic_type, "Head")
+        self.assertAlmostEqual(relics[0].mainstat_value, 705)
