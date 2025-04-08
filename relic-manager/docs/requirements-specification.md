@@ -8,10 +8,11 @@ Relics each have a *set* and a *type*. Each relic has one *main stat* determined
 
 ## Functionality
 
-- The user can choose which profile to use
-- The user sees a list of all added relics
-  - This list may be sorted and filtered by various parameters
-- The program will calculate a score for each added relic based on their stats
-- The user can add relics to the database
-- The user can modify existing relics to update their stats
-- The user can remove relics from the database
+- [ ] The user can choose which profile to use
+- [x] The user sees a list of all added relics
+  - [ ] This list may be sorted and filtered by various parameters
+- [ ] The program will calculate a score for each added relic based on their stats
+- [x] The user can add relics to the database
+  - [ ] The stats can be customized
+- [ ] The user can modify existing relics to update their stats
+- [ ] The user can remove relics from the database
