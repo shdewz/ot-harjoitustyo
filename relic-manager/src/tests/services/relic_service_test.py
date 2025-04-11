@@ -13,12 +13,12 @@ class FakeRelicRepository:
     
     def create(self, relic):
         self.counter += 1
-        relic.id = self.counter
+        relic.relic_id = self.counter
         self.relics.append(relic)
         return relic
     
-    def delete(self, id):
-        self.relics = list(filter(lambda x: x.id != id, self.relics))
+    def delete(self, relic_id):
+        self.relics = list(filter(lambda x: x.relic_id != relic_id, self.relics))
         return True
 
 

@@ -45,13 +45,13 @@ class RelicRepository:
                     range(4)))}
             )
         """)
-        id = cursor.lastrowid
+        relic.relic_id = cursor.lastrowid
         self._connection.commit()
         return relic
-    
-    def delete(self, id):
+
+    def delete(self, relic_id):
         cursor = self._connection.cursor()
-        cursor.execute(f"delete from relics where id = {id};")
+        cursor.execute(f"delete from relics where id = {relic_id};")
         self._connection.commit()
         return True
 
