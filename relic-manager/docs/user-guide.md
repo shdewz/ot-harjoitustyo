@@ -1,6 +1,17 @@
 # User guide
 
+## Requirements
+
+- Python `>=3.12`
+
 ## Configuration
+
+Enter the app directory first:
+
+```bash
+cd relic-manager
+```
+
 
 Configure the `.env` file as follows:
 
