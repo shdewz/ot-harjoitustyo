@@ -12,7 +12,6 @@ Enter the app directory first:
 cd relic-manager
 ```
 
-
 Configure the `.env` file as follows:
 
 ```env
