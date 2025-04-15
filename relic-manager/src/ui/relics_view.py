@@ -3,9 +3,10 @@ from services.relic_service import relic_service
 from entities.relic import Relic
 
 class RelicsView:
-    def __init__(self, root):
+    def __init__(self, root, handle_show_add_relic_view):
         self._root = root
         self._frame = None
+        self._handle_show_add_relic_field = handle_show_add_relic_view
 
         self._initialize()
 
@@ -16,18 +17,18 @@ class RelicsView:
         self._frame.destroy()
 
     def _initialize_header(self):
-        user_label = ttk.Label(
+        title_label = ttk.Label(
             master=self._frame,
             text="List of added relics"
         )
 
-        user_label.grid(row=0, column=0, padx=5, pady=5, sticky=constants.W)
+        title_label.grid(row=0, column=0, padx=5, pady=5, sticky=constants.W)
 
         add_relic_button = ttk.Button(
             master=self._frame,
             text="Add new relic",
-            # command=self._show_add_relic_view
-            command=self._add_temp_relic
+            command=self._handle_show_add_relic_field
+            # command=self._add_temp_relic
         )
 
         add_relic_button.grid(
@@ -83,9 +84,6 @@ class RelicsView:
             pady=5,
             sticky=constants.EW
         )
-
-    def _show_add_relic_view(self):
-        self.destroy()
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)

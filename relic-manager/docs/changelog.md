@@ -13,3 +13,7 @@
 - The user now sees all of the relic stats, including substats 2-4 (previously only 1)
 - The mainstat value is automatically calculated based on relic level and stat type
 - Added delete function internally
+
+## Week 5
+
+- Added a page for creating new relics
