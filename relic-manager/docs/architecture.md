@@ -1,8 +1,8 @@
-# Architechture
+# Architecture
 
 ## Structure
 
-The application structure follows the same three layer architechture as the reference app:
+The application structure follows the same three layer architecture as the reference app:
 
 ```
  ui
