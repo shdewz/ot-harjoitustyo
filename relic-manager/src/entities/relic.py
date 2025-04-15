@@ -112,6 +112,5 @@ class Relic:
         self.level = level
         self.mainstat = mainstat
         mainstat_stats = relic_mainstats[self.mainstat]
-        print(mainstat_stats)
         self.mainstat_value = mainstat_stats[1] + self.level * mainstat_stats[2]
         self.substats = substats
