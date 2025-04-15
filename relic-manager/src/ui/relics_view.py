@@ -28,7 +28,6 @@ class RelicsView:
             master=self._frame,
             text="Add new relic",
             command=self._handle_show_add_relic_field
-            # command=self._add_temp_relic
         )
 
         add_relic_button.grid(

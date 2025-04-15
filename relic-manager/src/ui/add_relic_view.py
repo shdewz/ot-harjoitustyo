@@ -1,4 +1,4 @@
-from tkinter import ttk, constants
+from tkinter import ttk, constants, StringVar
 from services.relic_service import relic_service
 from entities.relic import Relic
 
@@ -25,21 +25,48 @@ class AddRelicView:
             text="Add new relic"
         )
 
-        title_label.grid(row=0, column=0, padx=5, pady=5, sticky=constants.W)
+        title_label.grid(row=0, column=0, padx=5, pady=5, sticky=constants.EW)
 
-        add_relic_button = ttk.Button(
-            master=self._frame,
-            text="Confirm",
-            command=self._handle_show_relics_view
-        )
+        # current_var = StringVar()
+        # combobox = ttk.Combobox(master=self._frame, textvariable=current_var, values=["1", "2", "3"])
 
-        add_relic_button.grid(
-            row=0,
-            column=1,
-            padx=5,
-            pady=5,
-            sticky=constants.EW
-        )
+        # combobox.grid(
+        #     row=1,
+        #     column=1,
+        #     padx=5,
+        #     pady=5,
+        #     sticky=constants.EW
+        # )
 
-        self._frame.grid_columnconfigure(0, weight=1)
-        self._frame.grid_columnconfigure(1, weight=0)
+        row_index = 1
+
+        set_label = ttk.Label(master=self._frame, text="Relic Set:")
+        set_label.grid(row=row_index, column=0, padx=5, pady=5, sticky=constants.E)
+        set_var = StringVar()
+        set_entry = ttk.Combobox(master=self._frame, textvariable=set_var, values=["1", "2", "3"])
+        set_entry.grid(row=row_index, column=1, padx=5, pady=5, sticky=constants.EW)
+        row_index += 1
+
+        type_label = ttk.Label(master=self._frame, text="Type:")
+        type_label.grid(row=row_index, column=0, padx=5, pady=5, sticky=constants.E)
+        type_var = StringVar()
+        type_entry = ttk.Combobox(master=self._frame, textvariable=type_var, values=["Head", "Hands", "Body", "Feet"])
+        type_entry.grid(row=row_index, column=1, padx=5, pady=5, sticky=constants.EW)
+        row_index += 1
+
+        level_label = ttk.Label(master=self._frame, text="Level:")
+        level_label.grid(row=row_index, column=0, padx=5, pady=5, sticky=constants.E)
+        level_entry = ttk.Entry(master=self._frame)
+        level_entry.grid(row=row_index, column=1, padx=5, pady=5, sticky=constants.EW)
+        row_index += 1
+
+        sub1_label = ttk.Label(master=self._frame, text="Substat 1:")
+        sub1_label.grid(row=row_index, column=0, padx=5, pady=5, sticky=constants.E)
+        sub1_entry = ttk.Entry(master=self._frame)
+        sub1_entry.grid(row=row_index, column=1, padx=5, pady=5, sticky=constants.EW)
+        sub1_entry_val = ttk.Entry(master=self._frame)
+        sub1_entry_val.grid(row=row_index, column=2, padx=5, pady=5, sticky=constants.EW)
+        row_index += 1
+
+        add_relic_button = ttk.Button(master=self._frame, text="Confirm", command=self._handle_show_relics_view)
+        add_relic_button.grid(row=row_index, column=1, padx=5, pady=5, sticky=constants.EW)
