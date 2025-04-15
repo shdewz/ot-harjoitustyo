@@ -105,7 +105,7 @@ class RelicsView:
 def format_stat(stat, value):
     percent = "%" if stat[-1] == "%" else ""
     stat_name = stat[:-1] if percent == "%" else stat
-    return f"{round(value, 1) if percent == "%" else int(value)}{percent} {stat_name}"
+    return f"{round(value, 1) if percent == '%' else int(value)}{percent} {stat_name}"
 
 def sort(tree, col, desc):
     data = [(tree.set(item, col), item) for item in tree.get_children("")]
