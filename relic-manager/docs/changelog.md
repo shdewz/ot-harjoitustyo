@@ -16,4 +16,4 @@
 
 ## Week 5
 
-- Added a page for creating new relics
+- The user can now add a relic with the attributes of their choosing

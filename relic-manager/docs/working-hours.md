@@ -7,5 +7,5 @@
 | 1.4.  | 3 | setting up item creation and basic testing |
 | 8.4.  | 5 | improving functionality and setting up pylint |
 | 11.4. | 1 | cleaning up pylint errors |
-| 15.4. | 1 | adding a page for creating relics |
-| total | 15 | |
+| 15.4. | 4 | adding a page for creating relics |
+| total | 18 | |

@@ -13,6 +13,6 @@ Relics each have a *set* and a *type*. Each relic has one *main stat* determined
   - [ ] This list may be sorted and filtered by various parameters
 - [ ] The program will calculate a score for each added relic based on their stats
 - [x] The user can add relics to the database
-  - [ ] The stats can be customized
+  - [x] The stats can be customized
 - [ ] The user can modify existing relics to update their stats
 - [ ] The user can remove relics from the database
