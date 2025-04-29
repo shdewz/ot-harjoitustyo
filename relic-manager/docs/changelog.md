@@ -21,4 +21,5 @@
 ## Week 6
 
 - Adding a relic validates that the inputs are valid
+- Relics can be deleted from the main view
 - Added setup instructions to readme

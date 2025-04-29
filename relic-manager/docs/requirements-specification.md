@@ -15,4 +15,4 @@ Relics each have a *set* and a *type*. Each relic has one *main stat* determined
 - [x] The user can add relics to the database
   - [x] The stats can be customized
 - [ ] The user can modify existing relics to update their stats
-- [ ] The user can remove relics from the database
+- [x] The user can remove relics from the database
