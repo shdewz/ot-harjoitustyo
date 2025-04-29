@@ -2,6 +2,11 @@
 
 This program will be a **relic manager** for the gacha game *Honkai: Star Rail*, letting users manage and automatically score the value of their in-game items.
 
+## Releases
+
+- [Week 6](https://github.com/shdewz/ot-harjoitustyo/releases/tag/viikko6)
+- [Week 5](https://github.com/shdewz/ot-harjoitustyo/releases/tag/viikko5)
+
 ## Documentation
 
 - [User guide](relic-manager/docs/user-guide.md)
