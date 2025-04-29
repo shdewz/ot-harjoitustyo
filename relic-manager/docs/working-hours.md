@@ -8,5 +8,5 @@
 | 8.4.  | 5 | improving functionality and setting up pylint |
 | 11.4. | 1 | cleaning up pylint errors |
 | 15.4. | 4 | adding a page for creating relics |
-| 29.4. | 3 | improving documentation and adding delete function |
-| total | 18 | |
+| 29.4. | 4 | improving documentation and adding delete function |
+| total | 22 | |
