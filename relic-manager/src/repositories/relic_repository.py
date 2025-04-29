@@ -3,10 +3,25 @@ from db import get_database_connection
 
 
 class RelicRepository:
+    """Class responsible for handling database operations for relics
+    """
+
     def __init__(self, connection):
+        """Constructor
+        
+        Args:
+            connection: Connection object for the database
+        """
+
         self._connection = connection
 
     def find_all(self):
+        """Returns all relics
+
+        Returns:
+            Returns a list of Relic objects
+        """
+
         relics = []
         cursor = self._connection.cursor()
         cursor.execute("select * from relics;")
@@ -24,11 +39,23 @@ class RelicRepository:
         return relics
 
     def delete_all(self):
+        """Deletes all relics from the database
+        """
+
         cursor = self._connection.cursor()
         cursor.execute("delete from relics;")
         self._connection.commit()
 
     def create(self, relic):
+        """Adds a relic to the database
+
+        Args:
+            relic: a Relic object to add
+
+        Returns:
+            Returns the added Relic object along with its newly created ID
+        """
+
         cursor = self._connection.cursor()
         cursor.execute(f"""
             insert into relics (
@@ -50,10 +77,15 @@ class RelicRepository:
         return relic
 
     def delete(self, relic_id):
+        """Removes a specific relic from the database
+
+        Args:
+            relic_id: ID of the relic to be removed
+        """
+
         cursor = self._connection.cursor()
         cursor.execute(f"delete from relics where id = {relic_id};")
         self._connection.commit()
-        return True
 
 
 relic_repository = RelicRepository(get_database_connection())
