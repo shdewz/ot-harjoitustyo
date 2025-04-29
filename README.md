@@ -12,10 +12,11 @@ This program will be a **relic manager** for the gacha game *Honkai: Star Rail*,
 
 ## Setup
 
-1. Navigate to the app directory
+1. Navigate to the app directory and create the data folder
 
 ```bash
 cd relic-manager
+mkdir data
 ```
 
 2.  Install the dependencies
