@@ -17,3 +17,8 @@
 ## Week 5
 
 - The user can now add a relic with the attributes of their choosing
+
+## Week 6
+
+- Adding a relic validates that the inputs are valid
+- Added setup instructions to readme
