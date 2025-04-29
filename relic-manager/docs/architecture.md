@@ -20,6 +20,15 @@ repositories  -----|
 
 where `ui` handles the interface, `services` the application logic, and `repositories` the data storage side. `entities` contains the data structures used by the application.
 
+## User interface
+
+The user interface contains two views:
+
+- Main view
+- New relic view
+
+Both views are handled as their own class. Only one view is visible at a time. Showing the views is handled by the UI class.
+
 ## Main functionality
 
 ### Adding a relic
@@ -41,3 +50,11 @@ sequenceDiagram
   RelicService-->>UI: relic
   UI->UI: show_relics_view()
 ```
+
+## Data storage
+
+The `RelicRepository` class follows the repository model and handles saving data into an SQLite database.
+
+### Files
+
+Relics are saved in the `relics` table in an SQLite database, which is stored in the `data` folder. The `.env` file in the root directory determines the name of the database file.
