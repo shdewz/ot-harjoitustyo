@@ -1,9 +1,5 @@
 # User guide
 
-## Requirements
-
-- Python `>=3.12`
-
 ## Configuration
 
 Enter the app directory first:
