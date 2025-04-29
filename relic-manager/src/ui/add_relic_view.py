@@ -33,6 +33,31 @@ class AddRelicView:
         self._substat_fields[f"sub{index}_entry_val"] = ttk.Entry(master=self._frame)
         self._substat_fields[f"sub{index}_entry_val"].grid(row=row_index, column=2, padx=5, pady=5, sticky=constants.EW)
 
+    def _validate_relic(self):
+        _relic_set = self._set_entry.get()
+        if not _relic_set:
+            return False
+        _relic_type = self._type_entry.get()
+        if not _relic_type:
+            return False
+        _relic_level = self._level_entry.get()
+        if not _relic_level.isnumeric():
+            return False
+        _relic_mainstat_full = self._mainstat_entry.get()
+        _relic_mainstat = {v[0]: k for k, v in relic_mainstats.items()}.get(_relic_mainstat_full)
+        if not _relic_mainstat:
+            return False
+        _relic_substats = []
+        for i in range(4):
+            substat_type_full = self._substat_fields[f"sub{i + 1}_entry_type"].get()
+            substat = {v[0]: k for k, v in relic_substats.items()}.get(substat_type_full)
+            try:
+                substat_value = float(self._substat_fields[f"sub{i + 1}_entry_val"].get())
+                _relic_substats.append((substat, substat_value))
+            except ValueError:
+                return False
+        self._add_relic()
+
     def _add_relic(self):
         _relic_set = self._set_entry.get()
         _relic_type = self._type_entry.get()
@@ -95,6 +120,6 @@ class AddRelicView:
         self._add_substat_entry(4, row_index)
         row_index += 4
 
-        add_relic_button = ttk.Button(master=self._frame, text="Confirm", command=self._add_relic)
+        add_relic_button = ttk.Button(master=self._frame, text="Confirm", command=self._validate_relic)
         add_relic_button.grid(row=row_index, column=2, padx=5, pady=5, sticky=constants.EW)
 
