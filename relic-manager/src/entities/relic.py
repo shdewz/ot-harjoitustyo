@@ -1,3 +1,5 @@
+import math
+
 relic_mainstats = {
     # (full name, initial, per-level)
     # from https://honkai-star-rail.fandom.com/wiki/Relic/Stats#Main_Stat_Values
@@ -17,18 +19,18 @@ relic_mainstats = {
 }
 
 relic_substats = {
-    # (full name, low, mid, high) rolls of substats; 1 roll per 3 levels
-    "SPD": ("Speed", 2, 2.3, 2.6),
-    "HP": ("HP", 33.87, 38.103755, 42.33751),
-    "HP%": ("HP%", 3.456, 3.888, 4.32),
-    "ATK": ("ATK", 16.935, 19.051877, 21.168754),
-    "ATK%": ("ATK%", 3.456, 3.888, 4.32),
-    "DEF%": ("DEF%", 4.32, 4.86, 5.4),
-    "BE%": ("Break Effect", 5.184, 5.832, 6.48),
-    "EHR%": ("Effect Hit Rate", 3.456, 3.888, 4.32),
-    "RES%": ("Effect RES", 3.456, 3.888, 4.32),
-    "CRATE%": ("Crit Rate", 2.592, 2.916, 3.24),
-    "CDMG%": ("Crit Damage", 5.184, 5.832, 6.48),
+    # (full name, low, mid, high, weight) rolls of substats; 1 roll per 3 levels
+    "SPD": ("Speed", 2, 2.3, 2.6, 1),
+    "HP": ("HP", 33.87, 38.103755, 42.33751, 0.25),
+    "HP%": ("HP%", 3.456, 3.888, 4.32, 0.25),
+    "ATK": ("ATK", 16.935, 19.051877, 21.168754, 0.75),
+    "ATK%": ("ATK%", 3.456, 3.888, 4.32, 0.75),
+    "DEF%": ("DEF%", 4.32, 4.86, 5.4, 0.25),
+    "BE%": ("Break Effect", 5.184, 5.832, 6.48, 0.25),
+    "EHR%": ("Effect Hit Rate", 3.456, 3.888, 4.32, 0.25),
+    "RES%": ("Effect RES", 3.456, 3.888, 4.32, 0.25),
+    "CRATE%": ("Crit Rate", 2.592, 2.916, 3.24, 1),
+    "CDMG%": ("Crit Damage", 5.184, 5.832, 6.48, 1),
 }
 
 relic_types = {
@@ -89,6 +91,8 @@ relic_sets = {
     "The Wondrous BananAmusement Park": 1
 }
 
+relic_grades = ["F", "D", "C", "B", "A", "S", "SS", "SSS"]
+
 class Relic:
     def __init__(self, relic_id, relic_set, relic_type, level, mainstat, substats):
         """Relic constructor.
@@ -114,3 +118,28 @@ class Relic:
         mainstat_stats = relic_mainstats[self.mainstat]
         self.mainstat_value = mainstat_stats[1] + self.level * mainstat_stats[2]
         self.substats = substats
+        self.score = self._calculate_score()
+
+    def _calculate_score(self):
+        """Calculates a score for the relic based on main and substats.
+
+        Stats are normalized against the value of Crit DMG (64.8) at level 15 and assigned a weight based on importance, with Crit, ATK and SPD prioritized.
+        A letter grade is assigned in increments of 5 score.
+        
+        Returns:
+            Returns a string score for the relic including the letter grade
+        """
+
+        substat_score = 0
+        for substat in self.substats:
+            reference_stat = relic_mainstats[substat[0]]
+            normalization = 64.8 / (reference_stat[1] + 15 * reference_stat[2])
+            weight = relic_substats[substat[0]][4]
+            score = normalization * weight * substat[1]
+            substat_score += score
+
+        grade_score = relic_grades[min(math.floor(substat_score / 5) - 1, 7)]
+
+        print(substat_score)
+        print(grade_score)
+        return f"{math.floor(substat_score)} ({grade_score})"

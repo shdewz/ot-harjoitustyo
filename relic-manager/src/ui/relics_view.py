@@ -81,7 +81,7 @@ class RelicsView:
                 relic.relic_type,
                 relic.level,
                 format_stat(relic.mainstat, relic.mainstat_value)
-            ] + substats + [0])
+            ] + substats + [relic.score])
 
         tree.grid(
             row=1,
