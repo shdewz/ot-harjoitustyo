@@ -9,4 +9,5 @@
 | 11.4. | 1 | cleaning up pylint errors |
 | 15.4. | 4 | adding a page for creating relics |
 | 29.4. | 4 | improving documentation and adding delete function |
-| total | 22 | |
+| 9.5.  | 4 | improving documentation and adding relic score calculation |
+| total | 26 | |
