@@ -2,46 +2,39 @@
 
 ## Configuration
 
-Enter the app directory first:
+1. Navigate to the app directory and create the data folder
 
 ```bash
 cd relic-manager
+mkdir data
 ```
 
-Configure the `.env` file as follows:
+2. Configure the `.env` file as follows:
 
 ```env
 DATABASE_FILENAME=database.sqlite
 ```
 
-The database is saved to the `data` folder by default. Create this folder before first start if it does not exist.
-
-## Starting up
-
-Install all dependencies with
+3. Install the dependencies
 
 ```bash
 poetry install
 ```
 
-After installing dependencies, initialize the project with
+4. Initialize the database
 
 ```bash
 poetry run invoke build
 ```
 
-After initialization, the program can be started with
+## Starting up
+
+After setup, the program can be started with
 
 ```bash
 poetry run invoke start
 ```
 
-Additionally, the database may be pre-populated with some items using
-
-```bash
-poetry run python3 src/create_sample_db.py
-```
-
 ## Usage
 
-The main page shows all added relics in the database. Using the *Add new relic* button a new relic can be added, though currently only with predetermined fixed attributes.
+The main page shows all added relics in the database. Using the *Add new relic* button a new relic can be added and its stats chosen. Relics can be removed by double-clicking the *x* buttons.

@@ -24,19 +24,25 @@ cd relic-manager
 mkdir data
 ```
 
-2.  Install the dependencies
+2. Configure the `.env` file as follows:
+
+```env
+DATABASE_FILENAME=database.sqlite
+```
+
+3. Install the dependencies
 
 ```bash
 poetry install
 ```
 
-3. Initialize the database
+4. Initialize the database
 
 ```bash
 poetry run invoke build
 ```
 
-4. Start the app
+5. Start the app
 
 ```bash
 poetry run invoke start
