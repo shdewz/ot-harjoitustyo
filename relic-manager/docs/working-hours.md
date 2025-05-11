@@ -10,4 +10,5 @@
 | 15.4. | 4 | adding a page for creating relics |
 | 29.4. | 4 | improving documentation and adding delete function |
 | 9.5.  | 4 | improving documentation and adding relic score calculation |
-| total | 26 | |
+| 11.5. | 1 | (re-)adding a task to populate the database with sample data |
+| total | 27 | |
