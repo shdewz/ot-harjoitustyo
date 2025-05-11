@@ -28,3 +28,4 @@
 
 - Added relic score calculation
 - Improved documentation
+- Added a task to populate the database with sample data
