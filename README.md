@@ -4,6 +4,7 @@ This program will be a **relic manager** for the gacha game *Honkai: Star Rail*,
 
 ## Releases
 
+- [Week 7](https://github.com/shdewz/ot-harjoitustyo/releases/tag/viikko7)
 - [Week 6](https://github.com/shdewz/ot-harjoitustyo/releases/tag/viikko6)
 - [Week 5](https://github.com/shdewz/ot-harjoitustyo/releases/tag/viikko5)
 
