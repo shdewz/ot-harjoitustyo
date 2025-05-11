@@ -25,6 +25,7 @@ relic_substats = {
     "HP%": ("HP%", 3.456, 3.888, 4.32, 0.25),
     "ATK": ("ATK", 16.935, 19.051877, 21.168754, 0.75),
     "ATK%": ("ATK%", 3.456, 3.888, 4.32, 0.75),
+    "DEF": ("DEF", 33.87, 38.103755, 42.33751, 0.25),
     "DEF%": ("DEF%", 4.32, 4.86, 5.4, 0.25),
     "BE%": ("Break Effect", 5.184, 5.832, 6.48, 0.25),
     "EHR%": ("Effect Hit Rate", 3.456, 3.888, 4.32, 0.25),
@@ -102,12 +103,12 @@ class Relic:
             relic_type: Relic type (head, hands, body, feet, ball, rope)
             level: Relic level (integer, 1-15)
             mainstat: Mainstat type (
-                                    hp, atk, hp%, atk%, def%, ehr, healing, crate, cdmg, spd,
+                                    hp, atk, hp%, atk%, def%, ehr%, ohb%, crate%, cdmg%, spd,
                                     physical, fire, ice, wind, lightning, quantum, imaginary,
-                                    be, err
+                                    be%, err%
                                     )
             substats: array of substat type-value pairs:
-                type: (hp, hp%, atk, atk%, def, spd, crate, cdmg, ehr, be, effres)
+                type: (hp, hp%, atk, atk%, def, def%, spd, crate%, cdmg%, ehr%, be%, res%)
         """
 
         self.relic_id = relic_id
@@ -132,7 +133,7 @@ class Relic:
 
         substat_score = 0
         for substat in self.substats:
-            reference_stat = relic_mainstats[substat[0]]
+            reference_stat = relic_mainstats["HP"] if substat[0] == "DEF" else relic_mainstats["EHR%"] if substat[0] == "RES%" else relic_mainstats[substat[0]]
             normalization = 64.8 / (reference_stat[1] + 15 * reference_stat[2])
             weight = relic_substats[substat[0]][4]
             score = normalization * weight * substat[1]
@@ -140,6 +141,4 @@ class Relic:
 
         grade_score = relic_grades[min(math.floor(substat_score / 5) - 1, 7)]
 
-        print(substat_score)
-        print(grade_score)
         return f"{math.floor(substat_score)} ({grade_score})"
