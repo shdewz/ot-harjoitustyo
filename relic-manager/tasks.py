@@ -12,6 +12,10 @@ def build(ctx):
     ctx.run("python src/build.py", pty=pty_enable)
 
 @task
+def populate(ctx):
+    ctx.run("python src/populate_sample_db.py", pty=pty_enable)
+
+@task
 def test(ctx):
     ctx.run("pytest src", pty=pty_enable)
 

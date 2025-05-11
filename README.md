@@ -42,7 +42,13 @@ poetry install
 poetry run invoke build
 ```
 
-5. Start the app
+5. (Optional) Populate the database with sample data
+
+```bash
+poetry run invoke populate
+```
+
+6. Start the app
 
 ```bash
 poetry run invoke start
