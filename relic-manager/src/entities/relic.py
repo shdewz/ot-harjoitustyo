@@ -124,7 +124,8 @@ class Relic:
     def _calculate_score(self):
         """Calculates a score for the relic based on main and substats.
 
-        Stats are normalized against the value of Crit DMG (64.8) at level 15 and assigned a weight based on importance, with Crit, ATK and SPD prioritized.
+        Stats are normalized against the value of Crit DMG (64.8) at level 15
+        and assigned a weight based on importance, with Crit, ATK and SPD prioritized.
         A letter grade is assigned in increments of 5 score.
         
         Returns:
@@ -133,7 +134,9 @@ class Relic:
 
         substat_score = 0
         for substat in self.substats:
-            reference_stat = relic_mainstats["HP"] if substat[0] == "DEF" else relic_mainstats["EHR%"] if substat[0] == "RES%" else relic_mainstats[substat[0]]
+            reference_stat = (relic_mainstats["HP"] if substat[0] == "DEF"
+                              else relic_mainstats["EHR%"] if substat[0] == "RES%"
+                              else relic_mainstats[substat[0]])
             normalization = 64.8 / (reference_stat[1] + 15 * reference_stat[2])
             weight = relic_substats[substat[0]][4]
             score = normalization * weight * substat[1]
