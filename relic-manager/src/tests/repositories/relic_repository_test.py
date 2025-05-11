@@ -8,7 +8,7 @@ class TestTodoRepository(unittest.TestCase):
         relic_repository.delete_all()
 
         self.relic_a = Relic(1, "Example Set 1", "Head", 15, "HP", [("SPD", 6.2), ("ATK%", 8.7), ("EHR%", 11.9), ("ATK", 76)])
-        self.relic_b = Relic(1, "Example Set 2", "Body", 15, "ATK", [("EHR%", 7.8), ("CDMG", 5.8), ("BE%", 12.9), ("HP", 74)])
+        self.relic_b = Relic(1, "Example Set 2", "Body", 15, "ATK", [("EHR%", 7.8), ("CDMG%", 5.8), ("BE%", 12.9), ("HP", 74)])
 
     def test_create(self):
         relic_repository.create(self.relic_a)
